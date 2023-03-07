@@ -2,16 +2,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FiSun, FiMoon, FiX, FiMenu } from 'react-icons/fi';
+import { FiX, FiMenu } from 'react-icons/fi';
 import HireMeModal from '../HireMeModal';
-import logoLight from '../../public/images/light-logo.png';
+// import logoLight from '../../public/images/light-logo.png';
 import logoDark from '../../public/images/logo.png';
-import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 
 function AppHeader() {
     const [showMenu, setShowMenu] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [activeTheme, setTheme] = useThemeSwitcher();
 
     function toggleMenu() {
         if (!showMenu) {
@@ -111,6 +109,12 @@ function AppHeader() {
                         >
                             <Link href="#Projects">Projects</Link>
                         </div>
+                        <div
+                            className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
+                            aria-label="Skills"
+                        >
+                            <Link href="#Skills">Skills</Link>
+                        </div>
 
                         <div
                             className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
@@ -148,6 +152,12 @@ function AppHeader() {
                             aria-label="Projects"
                         >
                             <Link href="#Projects">Projects</Link>
+                        </div>
+                        <div
+                            className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
+                            aria-label="Skills"
+                        >
+                            <Link href="#Skills">Skills</Link>
                         </div>
 
                         <div

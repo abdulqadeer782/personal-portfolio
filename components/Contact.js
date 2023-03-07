@@ -27,11 +27,11 @@ const contacts = [
 
 function Contact() {
     const form = useRef();
-    const [infoMsg,setInfoMsg] = useState()
-    const [subject,setSubject] = useState('')               
-    const [email,setEmail] = useState('')
-    const [body,setBody] = useState('')
-    const [name,setName] = useState('')
+    const [infoMsg, setInfoMsg] = useState()
+    const [subject, setSubject] = useState('')
+    const [email, setEmail] = useState('')
+    const [body, setBody] = useState('')
+    const [name, setName] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -47,13 +47,13 @@ function Contact() {
                 body: body,
                 subject
             })
-        }).then((res)=>{
+        }).then((res) => {
             setInfoMsg('Email Sent!.')
             setBody("")
             setEmail("")
             setSubject('')
             setName('')
-        }).catch((err)=>{
+        }).catch((err) => {
             setInfoMsg('Something Went Wrong!.  ')
         })
     }
@@ -89,8 +89,8 @@ function Contact() {
                                     Contact Form
                                 </p>
                                 {infoMsg && <div class=" border-blue-500 text-white py-3" role="alert">
-  <p class="font-bold">{infoMsg}</p>
-</div>}
+                                    <p class="font-bold">{infoMsg}</p>
+                                </div>}
 
                                 <FormInput
                                     inputLabel="Full Name"
@@ -101,7 +101,7 @@ function Contact() {
                                     placeholderText="Your Name"
                                     ariaLabelName="Name"
                                     value={name}
-                                    onChange={(e)=>setName(e.target.value)}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                                 <FormInput
                                     inputLabel="Email"
@@ -112,7 +112,7 @@ function Contact() {
                                     placeholderText="Your email"
                                     ariaLabelName="Email"
                                     value={email}
-                                    onChange={(e)=>setEmail(e.target.value)}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <FormInput
                                     inputLabel="Subject"
@@ -123,7 +123,7 @@ function Contact() {
                                     placeholderText="Subject"
                                     ariaLabelName="Subject"
                                     value={subject}
-                                    onChange={(e)=>setSubject(e.target.value)}
+                                    onChange={(e) => setSubject(e.target.value)}
                                 />
 
                                 <div className="mt-6">
@@ -141,7 +141,7 @@ function Contact() {
                                         rows="6"
                                         aria-label="Message"
                                         value={body}
-                                        onChange={e=> setBody(e.target.value)}
+                                        onChange={e => setBody(e.target.value)}
                                     ></textarea>
                                 </div>
 

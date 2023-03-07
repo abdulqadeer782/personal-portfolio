@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowDownCircle } from 'react-icons/fi';
 
-function AppBanner() {
+function HeroSection() {
 
     return (
         <section id='Home'>
@@ -76,4 +76,4 @@ function AppBanner() {
     );
 }
 
-export default AppBanner;
+export default HeroSection;

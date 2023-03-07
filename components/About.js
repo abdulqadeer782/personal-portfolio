@@ -1,10 +1,7 @@
 import Image from 'next/image';
-import { useState } from 'react';
-import { aboutMeData } from './../data/aboutMeData';
 import {motion} from 'framer-motion'
 
 function About() {
-    const [aboutMe, setAboutMe] = useState(aboutMeData);
     return (
         <section id='About' className="py-5 sm:py-10 my-5 sm:mt-10">
             <div className="text-center">

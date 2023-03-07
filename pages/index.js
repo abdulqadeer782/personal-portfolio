@@ -1,11 +1,9 @@
-import Link from 'next/link';
 import PagesMetaHead from '../components/PagesMetaHead';
-import ProjectsGrid from '../components/projects/ProjectsGrid';
-import SkillSection from '../components/projects/SkillSection';
-import Button from '../components/reusable/Button';
-import AppBanner from '../components/shared/AppBanner';
+import Projects from '../components/Projects';
+import SkillSection from '../components/SkillSection';
 import About from '../components/About';
 import Contact from '../components/Contact';
+import HeroSection from '../components/HeroSection';
 
 export default function Home() {
 	
@@ -13,11 +11,11 @@ export default function Home() {
 		<div className="container mx-auto">
 			<PagesMetaHead title="Home" />
 
-			<AppBanner />
+			<HeroSection />
 
             <About/>
 
-			<ProjectsGrid />
+			<Projects />
 
             <SkillSection/>
             <Contact/>

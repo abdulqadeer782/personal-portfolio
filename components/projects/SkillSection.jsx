@@ -1,5 +1,5 @@
 import React from 'react'
-import useThemeSwitcher from '../../hooks/useThemeSwitcher'
+
 let skills = [
     {
         key : 'html',
