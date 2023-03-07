@@ -1,31 +1,62 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import PagesMetaHead from './PagesMetaHead';
 import Button from './reusable/Button';
 import FormInput from './reusable/FormInput';
 
+const contacts = [
+    {
+        id: 1,
+        name: 'Karachi,Pakistan',
+        icon: <FiMapPin />,
+    },
+    {
+        id: 2,
+        name: 'aqkalmati0@gmail.com',
+        icon: <FiMail />,
+    },
+    {
+        id: 3,
+        name: '+92 341 0292782',
+        icon: <FiPhone />,
+    },
+];
+
+
 function Contact() {
     const form = useRef();
+    const [infoMsg,setInfoMsg] = useState()
+    const [subject,setSubject] = useState('')               
+    const [email,setEmail] = useState('')
+    const [body,setBody] = useState('')
+    const [name,setName] = useState('')
 
-    const contacts = [
-        {
-            id: 1,
-            name: 'Karachi,Pakistan',
-            icon: <FiMapPin />,
-        },
-        {
-            id: 2,
-            name: 'aqkalmati0@gmail.com',
-            icon: <FiMail />,
-        },
-        {
-            id: 3,
-            name: '+92 341 0292782',
-            icon: <FiPhone />,
-        },
-    ];
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                name: name,
+                body: body,
+                subject
+            })
+        }).then((res)=>{
+            setInfoMsg('Email Sent!.')
+            setBody("")
+            setEmail("")
+            setSubject('')
+            setName('')
+        }).catch((err)=>{
+            setInfoMsg('Something Went Wrong!.  ')
+        })
+    }
 
     return (
         <section id='Contact' className="py-5 sm:py-10 my-5 sm:mt-10">
@@ -50,21 +81,16 @@ function Contact() {
                     <div className="w-full lg:w-1/2">
                         <div className="leading-loose">
                             <form
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                    emailjs.sendForm('YOUR_SERVICE_ID', 'template_fcz3hv6', form.current, 'YOUR_PUBLIC_KEY')
-                                    .then((result) => {
-                                        console.log(result.text);
-                                    }, (error) => {
-                                        console.log(error.text);
-                                    });
-                                }}
+                                onSubmit={handleSubmit}
                                 ref={form}
                                 className="max-w-xl m-4 p-6 sm:p-10 bg-secondary-light dark:bg-secondary-dark rounded-xl shadow-xl text-left"
                             >
-                                <p className="font-general-medium text-primary-dark dark:text-primary-light text-2xl mb-8">
+                                <p className="font-general-medium text-primary-dark dark:text-primary-light text-2xl mb-4">
                                     Contact Form
                                 </p>
+                                {infoMsg && <div class=" border-blue-500 text-white py-3" role="alert">
+  <p class="font-bold">{infoMsg}</p>
+</div>}
 
                                 <FormInput
                                     inputLabel="Full Name"
@@ -74,6 +100,8 @@ function Contact() {
                                     inputName="name"
                                     placeholderText="Your Name"
                                     ariaLabelName="Name"
+                                    value={name}
+                                    onChange={(e)=>setName(e.target.value)}
                                 />
                                 <FormInput
                                     inputLabel="Email"
@@ -83,6 +111,8 @@ function Contact() {
                                     inputName="email"
                                     placeholderText="Your email"
                                     ariaLabelName="Email"
+                                    value={email}
+                                    onChange={(e)=>setEmail(e.target.value)}
                                 />
                                 <FormInput
                                     inputLabel="Subject"
@@ -92,6 +122,8 @@ function Contact() {
                                     inputName="subject"
                                     placeholderText="Subject"
                                     ariaLabelName="Subject"
+                                    value={subject}
+                                    onChange={(e)=>setSubject(e.target.value)}
                                 />
 
                                 <div className="mt-6">
@@ -108,6 +140,8 @@ function Contact() {
                                         cols="14"
                                         rows="6"
                                         aria-label="Message"
+                                        value={body}
+                                        onChange={e=> setBody(e.target.value)}
                                     ></textarea>
                                 </div>
 
