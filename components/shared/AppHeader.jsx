@@ -36,7 +36,7 @@ function AppHeader() {
     }
 
     return (
-        <div>
+        <div className='sticky top-0 bg-white'>
             <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -49,39 +49,17 @@ function AppHeader() {
                     <div className="flex justify-between items-center px-4 sm:px-0">
                         <div>
                             <Link href="/">
-                                {activeTheme === 'dark' ? (
-                                    <Image
-                                        src={logoDark}
-                                        className="w-36 cursor-pointer"
-                                        alt="Dark Logo"
-                                        width={"200px"}
-                                        height={"50px"}
-                                        style={{ height: '100%', width: '100%' }}
-                                    />
-                                ) : (
-                                    <Image
-                                        src={logoLight}
-                                        className="w-36 cursor-pointer"
-                                        alt="Dark Logo"
-                                        width={"200px"}
-                                        height={"50px"}
-                                        style={{ height: '100%', width: '100%' }}
-                                    />
-                                )}
-                            </Link>
-                        </div>
 
-                        {/* Theme switcher small screen */}
-                        <div
-                            onClick={() => setTheme(activeTheme)}
-                            aria-label="Theme Switcher"
-                            className="block sm:hidden ml-0 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
-                        >
-                            {activeTheme === 'dark' ? (
-                                <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" />
-                            ) : (
-                                <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
-                            )}
+                                <Image
+                                    src={logoDark}
+                                    className="w-36 cursor-pointer"
+                                    alt="Dark Logo"
+                                    width={"200px"}
+                                    height={"50px"}
+                                    style={{ height: '100%', width: '100%' }}
+                                />
+
+                            </Link>
                         </div>
 
                         {/* Small screen hamburger menu */}
@@ -193,7 +171,7 @@ function AppHeader() {
                         </div>
 
                         {/* Theme switcher large screen */}
-                        <div
+                        {/* <div
                             onClick={() => setTheme(activeTheme)}
                             aria-label="Theme Switcher"
                             className="ml-8 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
@@ -203,7 +181,7 @@ function AppHeader() {
                             ) : (
                                 <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div>

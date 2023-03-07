@@ -4,7 +4,7 @@ const useThemeSwitcher = () => {
 	const [theme, setTheme] = useState(
 		typeof window !== 'undefined' ? localStorage.theme : ''
 	);
-	const activeTheme = theme === 'dark' ? 'light' : 'dark';
+	const activeTheme = 'light';
 
 	useEffect(() => {
 		const root = window.document.documentElement;

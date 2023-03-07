@@ -3,22 +3,12 @@ import { FiSearch } from 'react-icons/fi';
 import ProjectSingle from './ProjectSingle';
 import { projectsData } from '../../data/projectsData';
 import ProjectsFilter from './ProjectsFilter';
+import Link from 'next/link';
+import Button from '../reusable/Button';
 
 function ProjectsGrid() {
 	const [searchProject, setSearchProject] = useState();
 	const [selectProject, setSelectProject] = useState();
-
-	// @todo - To be fixed
-	// const searchProjectsByTitle = projectsData.filter((item) => {
-	// 	const result = item.title
-	// 		.toLowerCase()
-	// 		.includes(searchProject.toLowerCase())
-	// 		? item
-	// 		: searchProject == ''
-	// 		? item
-	// 		: '';
-	// 	return result;
-	// });
 
 	const selectProjectsByCategory = projectsData.filter((item) => {
 		let category =
@@ -27,7 +17,7 @@ function ProjectsGrid() {
 	});
 
 	return (
-		<section className="py-5 sm:py-10 mt-5 sm:mt-10">
+		<section id='Projects' className="py-5 sm:py-10 mt-5 sm:mt-10">
 			<div className="text-center">
 				<p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
 					Projects
@@ -114,6 +104,13 @@ function ProjectsGrid() {
 					: projectsData.map((project, index) => (
 							<ProjectSingle key={index} {...project} />
 					  ))}
+			</div>
+			<div className="mt-10 sm:mt-15 flex justify-center">
+				<div className="font-general-medium flex items-center px-6 py-3 rounded-lg shadow-lg hover:shadow-xl bg-indigo-500 hover:bg-indigo-600 focus:ring-1 focus:ring-indigo-900 text-white text-lg sm:text-xl duration-300">
+					<Link href="/projects" aria-label="More Projects" passHref>
+						<Button title="More Projects" />
+					</Link>
+				</div>
 			</div>
 		</section>
 	);
