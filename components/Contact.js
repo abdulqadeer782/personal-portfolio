@@ -6,6 +6,10 @@ import PagesMetaHead from './PagesMetaHead';
 import Button from './reusable/Button';
 import FormInput from './reusable/FormInput';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 const contacts = [
     {
         id: 1,
@@ -48,6 +52,16 @@ function Contact() {
                 subject
             })
         }).then((res) => {
+            toast(res.data.message,{
+                position: "bottom-left",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                })
             setInfoMsg('Email Sent!.')
             setBody("")
             setEmail("")
@@ -179,6 +193,8 @@ function Contact() {
                     </div>
                 </motion.div>
             </div>
+            {/* notification  */}
+            <ToastContainer />
         </section>
     );
 }

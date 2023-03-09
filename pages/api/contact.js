@@ -14,9 +14,7 @@ export default function (req, res) {
         from: 'Abdul Qadeer <aqkalmati0@gmail.com',
         to: 'aqkalmati0@gmail.com',
         subject: req.body.subject,
-        html: `<p>From : ${req.body.email}</p><p> Message : ${req.body.body}</p>`,
-        name : 'Ali'
-    
+        html: `<p>Subject : ${req.body.subject}</p><p>From : ${req.body.email}</p><p>Name : ${req.body.name}</p><p> Message : ${req.body.body}</p>`,
     };
 
     transporter.sendMail(mailOptions, function(error, info) {

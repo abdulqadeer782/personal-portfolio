@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import Button from './reusable/Button';
 
@@ -10,6 +11,23 @@ const selectOptions = [
 ];
 
 function HireMeModal({ onClose, onRequest }) {
+    const [subject, setSubject] = useState('')
+    const [email, setEmail] = useState('')
+    const [body, setBody] = useState('')
+    const [name, setName] = useState('')
+
+	let formData = {
+		name,
+		email,
+		subject : name,
+		body
+	}
+
+	const handleSubmit = (e) =>{
+		e.preventDefault()
+		console.log(formData)
+	}
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -37,9 +55,7 @@ function HireMeModal({ onClose, onRequest }) {
 						</div>
 						<div className="modal-body p-5 w-full h-full">
 							<form
-								onSubmit={(e) => {
-									e.preventDefault();
-								}}
+								onSubmit={handleSubmit}
 								className="max-w-xl m-4 text-left"
 							>
 								<div className="">
@@ -51,6 +67,8 @@ function HireMeModal({ onClose, onRequest }) {
 										required
 										placeholder="Name"
 										aria-label="Name"
+										value={name}
+										onChange={(e)=>setName(e.target.value)}
 									/>
 								</div>
 								<div className="mt-6">
@@ -62,6 +80,8 @@ function HireMeModal({ onClose, onRequest }) {
 										required
 										placeholder="Email"
 										aria-label="Email"
+										value={email}
+										onChange={(e)=>setEmail(e.target.value)}
 									/>
 								</div>
 								<div className="mt-6">
@@ -72,11 +92,14 @@ function HireMeModal({ onClose, onRequest }) {
 										type="text"
 										required
 										aria-label="Project Category"
+										value={subject}
+										onChange={e=> setSubject(e.target.value)}
 									>
 										{selectOptions.map((option) => (
 											<option
 												className="text-normal sm:text-md"
 												key={option}
+												value={option}
 											>
 												{option}
 											</option>
@@ -93,6 +116,8 @@ function HireMeModal({ onClose, onRequest }) {
 										rows="6"
 										aria-label="Details"
 										placeholder="Project description"
+										value={body}
+										onChange={e=>setBody(e.target.value)}
 									></textarea>
 								</div>
 
