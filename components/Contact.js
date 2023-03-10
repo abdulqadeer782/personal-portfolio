@@ -5,10 +5,9 @@ import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import PagesMetaHead from './PagesMetaHead';
 import Button from './reusable/Button';
 import FormInput from './reusable/FormInput';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
 
 const contacts = [
     {
@@ -52,17 +51,7 @@ function Contact() {
                 subject
             })
         }).then((res) => {
-            toast(res.data.message,{
-                position: "bottom-left",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                })
-            setInfoMsg('Email Sent!.')
+            NotificationManager.success('Email has been sent!.','Success');
             setBody("")
             setEmail("")
             setSubject('')
@@ -193,8 +182,7 @@ function Contact() {
                     </div>
                 </motion.div>
             </div>
-            {/* notification  */}
-            <ToastContainer />
+            <NotificationContainer/>
         </section>
     );
 }

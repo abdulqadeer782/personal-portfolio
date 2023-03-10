@@ -17,11 +17,11 @@ export default function (req, res) {
         html: `<p>Subject : ${req.body.subject}</p><p>From : ${req.body.email}</p><p>Name : ${req.body.name}</p><p> Message : ${req.body.body}</p>`,
     };
 
-    transporter.sendMail(mailOptions, function(error, info) {
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            res.status(500).json({message : 'Something went wrong',errors : error})
+            res.status(500).json({ message: 'Something went wrong', errors: error })
         } else {
-            res.status(200).json({message : 'Email Sent to'})
+            res.status(200).json({ message: 'Email Sent to' })
         }
     });
 }
